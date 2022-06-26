@@ -1,17 +1,18 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 import itemData from "./itemData.json";
 
-const initialState = [...itemData];
+const initialItemState = [...itemData];
 
 const itemSlice = createSlice({
   name: "items",
-  initialState: initialState,
+  initialState: initialItemState,
   reducers: {
-    add(state, action) {
-      state = [...state, action.payload];
+    addItem(state, action) {
+      // state = [action.payload, ...state];
+      state.unshift(action.payload);
     },
-    update(state) {
-      state = [...state];
+    update(state, action) {
+      return state.filter((element) => element.name !== action.payload);
     },
   },
 });

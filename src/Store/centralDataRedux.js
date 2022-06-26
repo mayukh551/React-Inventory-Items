@@ -8,7 +8,6 @@ const itemSlice = createSlice({
   initialState: initialItemState,
   reducers: {
     addItem(state, action) {
-      // state = [action.payload, ...state];
       state.unshift(action.payload);
     },
     update(state, action) {

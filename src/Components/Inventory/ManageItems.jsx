@@ -8,6 +8,7 @@ import NewItemForm from "./NewItemForm";
 const ManageItems = () => {
   const itemsList = useSelector((state) => state.items);
   const [isNewItem, setIsNewItem] = useState(false);
+  const [ifUpdateElement, setIfUpdateElement] = useState(false);
   const dispatch = useDispatch();
 
   const addNewEventHandler = () => {
@@ -20,6 +21,10 @@ const ManageItems = () => {
     console.log(itemsList.filter((element) => element.name !== item.name));
 
     dispatch(itemSliceActions.update(item.name));
+  };
+
+  const updateProperty = () => {
+    setIfUpdateElement((prevCond) => !prevCond);
   };
 
   useEffect(() => {
@@ -58,7 +63,7 @@ const ManageItems = () => {
                   key={item.name}
                   className="relative shadow-2xl hover:scale-105 transition-transform text-white h-44 rounded-lg bg-fuchsia-600 w-[25rem] flex flex-col justify-evenly py-4 px-9"
                 >
-                  <h3>{item.name}</h3>
+                  <h3 onClick={updateProperty}>{item.name}</h3>
                   <div className="flex justify-start">
                     <span className="mr-5">{item.details.ram}</span>
                     <span className="mr-5">{item.details.internalStorage}</span>

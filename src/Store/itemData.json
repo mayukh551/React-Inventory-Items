@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Galaxy M31",
+    "price": "Rs 18,999",
+    "description": "Hey there",
+    "details": {
+      "ram": "6GB",
+      "internalStorage": "128GB",
+      "brand": "Samsung"
+    }
+  },
+  {
+    "name": "Galaxy S10",
+    "price": "Rs 78,999",
+    "description": "Hey there",
+    "details": {
+      "ram": "12GB",
+      "internalStorage": "256GB",
+      "brand": "Samsung"
+    }
+  },
+  {
+    "name": "Redmi Note 4",
+    "price": "Rs 15,999",
+    "description": "Hey there",
+    "details": {
+      "ram": "8GB",
+      "internalStorage": "128GB",
+      "brand": "Xiaomi"
+    }
+  },
+  {
+    "name": "Surface Duo",
+    "price": "Rs 21,999",
+    "description": "Hey there",
+    "details": {
+      "ram": "12GB",
+      "internalStorage": "256GB",
+      "brand": "Microsoft"
+    }
+  }
+]

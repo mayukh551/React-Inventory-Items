@@ -4,19 +4,32 @@ import BackHome from "../UI/BackHome";
 import FilterItems from "./FilterItems";
 import GalleryView from "./GalleryView";
 import ListView from "./ListView";
+import SortItems from "./SortItems";
 
 const ViewItems = () => {
   const [listView, setView] = useState("list");
   const [showFilterMenu, setShowFilterMenu] = useState(false);
+  const [showSortMenu, setShowSortMenu] = useState(false);
+
+  const listItems = useSelector((state) => state.items);
+  const [updatedList, setUpdatedList] = useState([...listItems]);
 
   const filterMenuHandler = () => {
     setShowFilterMenu((prevCond) => !prevCond);
   };
 
-  const listItems = useSelector((state) => state.items);
+  const SortMenuHandler = () => {
+    setShowSortMenu((prevCond) => !prevCond);
+  };
+
+  const updatedListHandler = (newList) => {
+    console.log("New List :", newList);
+    filterMenuHandler();
+    setUpdatedList([...newList]);
+  };
 
   return (
-    <div className="relative py-7 bg-amber-500">
+    <div className="relative py-7 bg-amber-500 min-h-screen">
       <BackHome />
       <div className="py-7 px-28 flex flex-row justify-between items-center">
         <div
@@ -39,17 +52,33 @@ const ViewItems = () => {
             Gallery View
           </span>
         </div>
-        <div className="cursor-default hover:bg-slate-600 hover:text-white border-2 border-slate-600 text-slate-600 py-1 px-3">
-          Sort
+        <div className="relative">
+          <div
+            onClick={SortMenuHandler}
+            className="cursor-default hover:bg-slate-600 hover:text-white border-2 border-slate-600 text-slate-600 py-1 px-3"
+          >
+            Sort
+          </div>
+          {showSortMenu && (
+            <SortItems
+              listItems={listItems}
+              updatedListHandler={updatedListHandler}
+            />
+          )}
         </div>
       </div>
       {listView === "gallery" ? (
-        <GalleryView listItems={listItems} />
+        <GalleryView listItems={updatedList} />
       ) : (
-        <ListView listItems={listItems} />
+        <ListView listItems={updatedList} />
       )}
 
-      {showFilterMenu && <FilterItems />}
+      {showFilterMenu && (
+        <FilterItems
+          listItems={listItems}
+          updatedListHandler={updatedListHandler}
+        />
+      )}
     </div>
   );
 };

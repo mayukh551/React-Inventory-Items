@@ -25,7 +25,7 @@ const InventoryItem = (props) => {
           props.deleteItem(item);
         }}
       >
-        <i className="absolute text-xl top-2 right-2 text-red-700 bi bi-x-circle"></i>
+        <i className="absolute text-xl top-2 right-2 text-red-700 bi bi-dash-circle-fill"></i>
       </button>
     </div>
   );

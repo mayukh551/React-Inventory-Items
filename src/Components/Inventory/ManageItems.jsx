@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { itemSliceActions } from "../../Store/centralDataRedux";
 import BackHome from "../UI/BackHome";
+import InventoryItem from "./InventoryItem";
 
 import NewItemForm from "./NewItemForm";
 
 const ManageItems = () => {
   const itemsList = useSelector((state) => state.items);
   const [isNewItem, setIsNewItem] = useState(false);
-  const [ifUpdateElement, setIfUpdateElement] = useState(false);
+
   const dispatch = useDispatch();
 
   const addNewEventHandler = () => {
@@ -23,10 +24,6 @@ const ManageItems = () => {
     dispatch(itemSliceActions.update(item.name));
   };
 
-  const updateProperty = () => {
-    setIfUpdateElement((prevCond) => !prevCond);
-  };
-
   useEffect(() => {
     console.log(itemsList);
   }, []);
@@ -34,6 +31,7 @@ const ManageItems = () => {
   return (
     <div>
       <BackHome />
+      <h1 className="text-center text-7xl my-5">Inventory</h1>
       <div className="py-8">
         {isNewItem == false ? (
           <div className="text-center mb-7">
@@ -59,25 +57,11 @@ const ManageItems = () => {
           ) : (
             itemsList.map((item) => {
               return (
-                <div
+                <InventoryItem
+                  item={item}
                   key={item.name}
-                  className="relative shadow-2xl hover:scale-105 transition-transform text-white h-44 rounded-lg bg-fuchsia-600 w-[25rem] flex flex-col justify-evenly py-4 px-9"
-                >
-                  <h3 onClick={updateProperty}>{item.name}</h3>
-                  <div className="flex justify-start">
-                    <span className="mr-5">{item.details.ram}</span>
-                    <span className="mr-5">{item.details.internalStorage}</span>
-                    <span className="mr-5">{item.details.brand}</span>
-                  </div>
-                  <div className="w-full text-right">{item.price}</div>
-                  <button
-                    onClick={() => {
-                      deleteItem(item);
-                    }}
-                  >
-                    <i className="absolute text-xl top-2 right-2 text-red-700 bi bi-x-circle"></i>
-                  </button>
-                </div>
+                  deleteItem={deleteItem}
+                />
               );
             })
           )}

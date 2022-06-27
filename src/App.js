@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import ManageItems from "./Components/Inventory/ManageItems";
-import ViewItems from "./Components/Inventory/ViewItems";
+import ViewItems from "./Components/ListingPage/ViewItems";
 
 function App() {
   return (

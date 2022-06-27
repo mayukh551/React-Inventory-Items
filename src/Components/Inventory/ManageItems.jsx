@@ -9,7 +9,6 @@ import NewItemForm from "./NewItemForm";
 const ManageItems = () => {
   const itemsList = useSelector((state) => state.items);
   const [isNewItem, setIsNewItem] = useState(false);
-
   const dispatch = useDispatch();
 
   const addNewEventHandler = () => {
@@ -25,22 +24,7 @@ const ManageItems = () => {
   };
 
   const updateItem = (item) => {
-    var findItem;
-    console.log("Before looking");
-    itemsList.forEach((element, index) => {
-      if (element.id === item.id) findItem = index;
-    });
-    console.log("Item found at index:", findItem + 1);
-    var updatedList = itemsList;
-    console.log("copied original list");
-    console.log(updatedList[findItem]);
-    updatedList[findItem] = {
-      ...updatedList[findItem],
-      ...item,
-    };
-    console.log("List updated", updatedList);
-
-    // dispatch(itemSliceActions.update(updatedList));
+    dispatch(itemSliceActions.updateList(item));
   };
 
   useEffect(() => {

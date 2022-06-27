@@ -14,6 +14,12 @@ const itemSlice = createSlice({
       // return state.filter((element) => element.name !== action.payload);
       return action.payload;
     },
+    updateList(state, action) {
+      var itemIndex = state.findIndex(
+        (element) => element.id === action.payload.id
+      );
+      state[itemIndex] = action.payload;
+    },
   },
 });
 

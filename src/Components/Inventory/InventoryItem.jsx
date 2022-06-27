@@ -35,6 +35,7 @@ const InventoryItem = (props) => {
     };
     console.log(newData);
     props.updateItem(newData);
+    editOptionHandler();
   };
 
   return (

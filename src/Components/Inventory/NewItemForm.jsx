@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { itemSliceActions } from "../../Store/centralDataRedux";
 
 const NewItemForm = (props) => {
   const dispatch = useDispatch();
   const [ifEmptyForm, setIfEmptyForm] = useState(false);
+  const listItems = useSelector((state) => state.items);
 
   const nameRef = useRef(null);
   const ramRef = useRef(null);
@@ -43,6 +44,7 @@ const NewItemForm = (props) => {
     var enteredBrandInput = labelAndTypes[5].elementRef.current.value;
 
     const newItem = {
+      id: listItems.length + 1,
       name: enteredNameInput,
       price: "Rs " + enteredPriceInput,
       description: enteredDescInput,

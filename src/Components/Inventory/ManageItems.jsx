@@ -18,10 +18,29 @@ const ManageItems = () => {
 
   const deleteItem = (item) => {
     console.log(item.name);
-    // const updatedList =
     console.log(itemsList.filter((element) => element.name !== item.name));
+    var updatedList = itemsList.filter((element) => element.name !== item.name);
 
-    dispatch(itemSliceActions.update(item.name));
+    dispatch(itemSliceActions.update(updatedList));
+  };
+
+  const updateItem = (item) => {
+    var findItem;
+    console.log("Before looking");
+    itemsList.forEach((element, index) => {
+      if (element.id === item.id) findItem = index;
+    });
+    console.log("Item found at index:", findItem + 1);
+    var updatedList = itemsList;
+    console.log("copied original list");
+    console.log(updatedList[findItem]);
+    updatedList[findItem] = {
+      ...updatedList[findItem],
+      ...item,
+    };
+    console.log("List updated", updatedList);
+
+    // dispatch(itemSliceActions.update(updatedList));
   };
 
   useEffect(() => {
@@ -61,6 +80,7 @@ const ManageItems = () => {
                   item={item}
                   key={item.name}
                   deleteItem={deleteItem}
+                  updateItem={updateItem}
                 />
               );
             })

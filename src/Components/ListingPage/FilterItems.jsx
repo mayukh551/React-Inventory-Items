@@ -1,17 +1,6 @@
 import React, { useRef } from "react";
 import Card from "../UI/Card";
 
-const arrangeItems = (list) => {
-  list.sort((a, b) => {
-    console.log(b.slice(0, -2), a.slice(0, -2));
-    if (b.slice(0, -2) < a.slice(0, -2)) return 1;
-    else if (b.slice(0, -2) > a.slice(0, -2)) return -1;
-    else return 0;
-  });
-  console.log("Sorted List", list);
-  return list;
-};
-
 const DropdownMenu = React.forwardRef((props, ref) => {
   return (
     <div className="flex flex-row justify-between">
@@ -55,19 +44,20 @@ const FilterItems = (props) => {
     var updatedList = listItems;
     if (ramRef.current.value !== "-- Select --") {
       updatedList = updatedList.filter(
-        (item) => item.details.ram == ramRef.current.value
+        (item) => item.details.ram === ramRef.current.value
       );
     }
     if (storageRef.current.value !== "-- Select --") {
       updatedList = updatedList.filter(
-        (item) => item.details.internalStorage == storageRef.current.value
+        (item) => item.details.internalStorage === storageRef.current.value
       );
     }
     if (brandRef.current.value !== "-- Select --") {
       updatedList = updatedList.filter(
-        (item) => item.details.brand == brandRef.current.value
+        (item) => item.details.brand === brandRef.current.value
       );
     }
+
     props.updatedListHandler(updatedList);
   };
 
@@ -83,6 +73,11 @@ const FilterItems = (props) => {
       />
       <DropdownMenu label="Brand" options={brand} ref={brandRef} />
       <div className="text-right mt-4">
+        <button onClick={props.showOriginalList}
+        className="rounded-lg hover:bg-purple-700 bg-purple-600 text-white px-3 py-1 mr-6"
+        >
+          Clear Filters
+        </button>
         <button
           onClick={applyFilterHandler}
           className="rounded-lg hover:bg-purple-700 bg-purple-600 text-white px-3 py-1"

@@ -16,9 +16,9 @@ const NewItemForm = (props) => {
 
   const labelAndTypes = [
     { label: "Item Name", type: "text", elementRef: nameRef },
-    { label: "RAM", type: "number", elementRef: ramRef },
-    { label: "Internal Storage", type: "number", elementRef: storageRef },
-    { label: "Price", type: "number", elementRef: priceRef },
+    { label: "RAM (GB)", type: "number", elementRef: ramRef },
+    { label: "Internal Storage (GB)", type: "number", elementRef: storageRef },
+    { label: "Price (Rs)", type: "number", elementRef: priceRef },
     { label: "Description", type: "text", elementRef: descriptionRef },
     { label: "Brand Name", type: "text", elementRef: brandRef },
   ];

@@ -1,6 +1,6 @@
 # Invenotry-Item-Management
 
-[Project URL](https://github.com/facebook/create-react-app)
+[Project URL](https://inventory-item-management.netlify.app/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Filter and sort exisitng items
 - View items in list or gallery form
 
-##In the project directory, you can run:
+## In the project directory, you can run:
 
 ### `npm start`
 

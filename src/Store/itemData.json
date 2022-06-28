@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Galaxy M31",
-    "price": "Rs 18,999",
+    "price": "Rs 18999",
     "description": "Hey there",
     "details": {
       "ram": "6GB",
@@ -13,7 +13,7 @@
   {
     "id": 2,
     "name": "Galaxy S10",
-    "price": "Rs 78,999",
+    "price": "Rs 78999",
     "description": "Hey there",
     "details": {
       "ram": "12GB",
@@ -24,7 +24,7 @@
   {
     "id": 3,
     "name": "Redmi Note 4",
-    "price": "Rs 15,999",
+    "price": "Rs 15999",
     "description": "Hey there",
     "details": {
       "ram": "8GB",
@@ -35,7 +35,7 @@
   {
     "id": 4,
     "name": "Surface Duo",
-    "price": "Rs 21,999",
+    "price": "Rs 21999",
     "description": "Hey there",
     "details": {
       "ram": "12GB",

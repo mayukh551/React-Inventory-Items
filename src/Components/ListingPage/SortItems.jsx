@@ -1,29 +1,33 @@
-import React, { useRef } from "react";
+import React from "react";
 
 const SortItems = (props) => {
   const selectionHandler = (event) => {
-    var updatedList = props.listItems;
-    // console.log(updatedList);
-    console.log(event.target.value);
+    var updatedList = [...props.listItems];
     const sortOption = event.target.value;
-    if (sortOption === "Highest - Lowest") {
-      console.log(updatedList);
-      updatedList = updatedList.sort((a, b) => {
-        if (a.price >= b.price) return 0;
-        else if (a.price < b.price) return -1;
+
+	// slice(3) to ignore the first 3 characters : 'R' , 's' and <space>
+
+    if (sortOption === "Highest - Lowest") 
+	{
+      updatedList.sort((a, b) => {
+        if (b.price.slice(3) >= a.price.slice(3)) 
+			return 0;
+
+        else if (b.price.slice(3) < a.price.slice(3)) 
+			return -1;
       });
-      console.log(updatedList);
-    }
-    if (sortOption === "Lowest - Highest") {
-      console.log(updatedList);
-      updatedList = updatedList.sort((a, b) => {
-        if (a.price <= b.price) return 0;
-        else if (a.price > b.price) return 1;
+    } 
+	
+	else if (sortOption === "Lowest - Highest") {
+      updatedList.sort((a, b) => {
+        if (b.price.slice(3) <= a.price.slice(3)) 
+			return 0;
+
+        else if (b.price.slice(3) > a.price.slice(3)) 
+			return -1;
       });
-      console.log(updatedList);
     }
-    console.log("New List after Sorting :", updatedList);
-    // props.updatedListHandler(updatedList);
+    props.updatedListHandler(updatedList);
   };
 
   return (

@@ -18,13 +18,19 @@ const ViewItems = () => {
     setShowFilterMenu((prevCond) => !prevCond);
   };
 
-  const SortMenuHandler = () => {
+  const sortMenuHandler = () => {
     setShowSortMenu((prevCond) => !prevCond);
   };
 
-  const updatedListHandler = (newList) => {
+  const filteredListHandler = (newList) => {
     console.log("New List :", newList);
     filterMenuHandler();
+    setUpdatedList([...newList]);
+  };
+
+  const sortedListHandler = (newList) => {
+    console.log("New List :", newList);
+    sortMenuHandler();
     setUpdatedList([...newList]);
   };
 
@@ -54,7 +60,7 @@ const ViewItems = () => {
         </div>
         <div className="relative">
           <div
-            onClick={SortMenuHandler}
+            onClick={sortMenuHandler}
             className="cursor-default hover:bg-slate-600 hover:text-white border-2 border-slate-600 text-slate-600 py-1 px-3"
           >
             Sort
@@ -62,7 +68,7 @@ const ViewItems = () => {
           {showSortMenu && (
             <SortItems
               listItems={listItems}
-              updatedListHandler={updatedListHandler}
+              updatedListHandler={sortedListHandler}
             />
           )}
         </div>
@@ -76,7 +82,7 @@ const ViewItems = () => {
       {showFilterMenu && (
         <FilterItems
           listItems={listItems}
-          updatedListHandler={updatedListHandler}
+          updatedListHandler={filteredListHandler}
         />
       )}
     </div>

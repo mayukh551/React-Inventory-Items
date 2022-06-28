@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Tools used : 
-[![My Skills](https://skillicons.dev/icons?i=js,html,css,react,redux)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=js,html,css,react,redux,tailwind)](https://skillicons.dev)
 
 ## What this website can do?
 - Allow user to add, delete, edit items in the inventory

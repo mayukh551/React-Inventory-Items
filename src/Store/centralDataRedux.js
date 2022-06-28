@@ -10,11 +10,11 @@ const itemSlice = createSlice({
     addItem(state, action) {
       state.unshift(action.payload);
     },
-    update(state, action) {
+    deleteItem(state, action) {
       // return state.filter((element) => element.name !== action.payload);
       return action.payload;
     },
-    updateList(state, action) {
+    updateItem(state, action) {
       var itemIndex = state.findIndex(
         (element) => element.id === action.payload.id
       );

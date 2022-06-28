@@ -20,11 +20,11 @@ const ManageItems = () => {
     console.log(itemsList.filter((element) => element.name !== item.name));
     var updatedList = itemsList.filter((element) => element.name !== item.name);
 
-    dispatch(itemSliceActions.update(updatedList));
+    dispatch(itemSliceActions.deleteItem(updatedList));
   };
 
   const updateItem = (item) => {
-    dispatch(itemSliceActions.updateList(item));
+    dispatch(itemSliceActions.updateItem(item));
   };
 
   useEffect(() => {
@@ -32,14 +32,18 @@ const ManageItems = () => {
   }, []);
 
   return (
-    <div>
+    <div
+      className={`bg-amber-500 h-screen ${
+        itemsList.length > 0 ? "overflow-y-scroll" : ""
+      }`}
+    >
       <BackHome />
       <h1 className="text-center text-7xl my-5">Inventory</h1>
       <div className="py-8">
         {isNewItem == false ? (
           <div className="text-center mb-7">
             <button
-              className="text-4xl hover:text-cyan-500 active:animate-ping"
+              className="text-4xl hover:text-white active:animate-ping"
               onClick={addNewEventHandler}
             >
               <i className="bi bi-plus-circle"></i>

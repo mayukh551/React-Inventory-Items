@@ -12,6 +12,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Filter and sort exisitng items
 - View items in list or gallery form
 
+## Hosted on:
+[![My Skills](https://skillicons.dev/icons?i=netlify)](https://skillicons.dev)
+
 ## In the project directory, you can run:
 
 ### `npm start`

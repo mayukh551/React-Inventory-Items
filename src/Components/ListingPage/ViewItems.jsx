@@ -75,7 +75,13 @@ const ViewItems = () => {
       else filterTags.pop();
     }
     if (filterTags.length === 0) setUpdatedList([...listItems]);
-    else setFilterTags([...filterTags]);
+    else {
+      // var newList = listItems;
+      // filterTags.forEach((tag) => {
+      //   newList.filter((item) => )
+      // })
+      setFilterTags([...filterTags]);
+    }
   };
 
   return (

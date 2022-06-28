@@ -1,6 +1,17 @@
 import React, { useRef } from "react";
 import Card from "../UI/Card";
 
+const arrangeItems = (list) => {
+  list.sort((a, b) => {
+    console.log(b.slice(0, -2), a.slice(0, -2));
+    if (b.slice(0, -2) < a.slice(0, -2)) return 1;
+    else if (b.slice(0, -2) > a.slice(0, -2)) return -1;
+    else return 0;
+  });
+  console.log("Sorted List", list);
+  return list;
+};
+
 const DropdownMenu = React.forwardRef((props, ref) => {
   return (
     <div className="flex flex-row justify-between">
@@ -19,15 +30,26 @@ const DropdownMenu = React.forwardRef((props, ref) => {
 const FilterItems = (props) => {
   const ramRef = useRef();
   const storageRef = useRef();
-  // const priceRef = useRef();
   const brandRef = useRef();
 
-  var listItems = props.listItems;
+  var listItems = [...props.listItems];
 
-  const ram = ["-- Select --", "6GB", "8GB", "12GB"];
-  const storage = ["-- Select --", "64GB", "128GB", "256GB"];
-  // const price = ["12000 - 20000", "20000 - 100000"];
-  const brand = ["-- Select --", "Samsung", "Xiaomi", "Microsoft"];
+  var ram = [];
+  listItems.forEach((item) => {
+    if (!ram.includes(item.details.ram)) ram.push(item.details.ram);
+  });
+  ram.unshift("-- Select --");
+
+  const storage = ["-- Select --"];
+  listItems.forEach((item) => {
+    if (!storage.includes(item.details.internalStorage))
+      storage.push(item.details.internalStorage);
+  });
+
+  const brand = ["-- Select --"];
+  listItems.forEach((item) => {
+    if (!brand.includes(item.details.brand)) brand.push(item.details.brand);
+  });
 
   const applyFilterHandler = () => {
     var updatedList = listItems;
@@ -59,7 +81,6 @@ const FilterItems = (props) => {
         options={storage}
         ref={storageRef}
       />
-      {/* <DropdownMenu label="Price" options={price} ref={priceRef} /> */}
       <DropdownMenu label="Brand" options={brand} ref={brandRef} />
       <div className="text-right mt-4">
         <button

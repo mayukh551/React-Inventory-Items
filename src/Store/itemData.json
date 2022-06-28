@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Galaxy M31",
     "price": "Rs 18999",
-    "description": "Hey there",
+    "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolore suscipit veritatis mollitia enim autem quasi quibusdam reiciendis iusto.",
     "details": {
       "ram": "6GB",
       "internalStorage": "128GB",
@@ -14,7 +14,7 @@
     "id": 2,
     "name": "Galaxy S10",
     "price": "Rs 78999",
-    "description": "Hey there",
+    "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolore suscipit veritatis mollitia enim autem quasi quibusdam reiciendis iusto.",
     "details": {
       "ram": "12GB",
       "internalStorage": "256GB",
@@ -25,7 +25,7 @@
     "id": 3,
     "name": "Redmi Note 4",
     "price": "Rs 15999",
-    "description": "Hey there",
+    "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolore suscipit veritatis mollitia enim autem quasi quibusdam reiciendis iusto.",
     "details": {
       "ram": "8GB",
       "internalStorage": "128GB",
@@ -36,7 +36,7 @@
     "id": 4,
     "name": "Surface Duo",
     "price": "Rs 21999",
-    "description": "Hey there",
+    "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolore suscipit veritatis mollitia enim autem quasi quibusdam reiciendis iusto.",
     "details": {
       "ram": "12GB",
       "internalStorage": "256GB",

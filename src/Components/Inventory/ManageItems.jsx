@@ -33,7 +33,7 @@ const ManageItems = () => {
 
   return (
     <div
-      className={`bg-amber-500 h-screen ${
+      className={`bg-amber-500 min-h-screen ${
         itemsList.length > 0 ? "overflow-y-scroll" : ""
       }`}
     >

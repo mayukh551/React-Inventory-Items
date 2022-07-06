@@ -33,9 +33,7 @@ const ManageItems = () => {
 
   return (
     <div
-      className={`bg-amber-500 min-h-screen ${
-        itemsList.length > 0 ? "overflow-y-scroll" : ""
-      }`}
+      className={`bg-amber-500 min-h-screen `}
     >
       <BackHome />
       <h1 className="text-center text-7xl my-5">Inventory</h1>

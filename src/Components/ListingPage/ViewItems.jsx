@@ -8,6 +8,7 @@ import ListView from "./ListView";
 import SortItems from "./SortItems";
 
 const ViewItems = () => {
+  // state variables for filter, sort options, and list and gallery view
   const [listView, setView] = useState("list");
   const [showFilterMenu, setShowFilterMenu] = useState(false);
   const [showSortMenu, setShowSortMenu] = useState(false);
@@ -16,6 +17,9 @@ const ViewItems = () => {
 
   const listItems = useSelector((state) => state.items);
   const [updatedList, setUpdatedList] = useState([...listItems]);
+
+  // state variables for holding and displaying filter tags
+  const [filterTags, setFilterTags] = useState([]);
 
   const filterMenuHandler = () => {
     setShowFilterMenu((prevCond) => !prevCond);
@@ -50,15 +54,39 @@ const ViewItems = () => {
   };
 
   const showOriginalList = () => {
-    setUpdatedList([...listItems])
+    setUpdatedList([...listItems]);
     filterMenuHandler();
-  }
+    setFilterTags([]);
+  };
+
+  const showFilterTags = (newTags) => {
+    newTags.forEach((tag) => {
+      if (!filterTags.includes(tag)) {
+        console.log("New Tag");
+        setFilterTags([...filterTags, tag]);
+      } else console.log("Tag already Implied");
+    });
+  };
+
+  const removeFilterTag = (tag) => {
+    if (filterTags.includes(tag)) {
+      var delIndex = filterTags.findIndex((element) => tag === element);
+      if (filterTags.length > 1) filterTags.splice(delIndex, 1);
+      else filterTags.pop();
+    }
+    if (filterTags.length === 0) setUpdatedList([...listItems]);
+    else {
+      // var newList = listItems;
+      // filterTags.forEach((tag) => {
+      //   newList.filter((item) => )
+      // })
+      setFilterTags([...filterTags]);
+    }
+  };
 
   return (
     <>
-      <div
-        className="relative py-7 bg-amber-500 h-screen overflow-y-scroll"
-      >
+      <div className="relative py-7 bg-amber-500 h-screen overflow-y-scroll">
         <BackHome />
         <div className="py-7 px-28 flex flex-col gap-y-4 bp_650:flex-row justify-between items-center">
           <div
@@ -99,6 +127,24 @@ const ViewItems = () => {
           </div>
         </div>
 
+        {/* Filter Tags */}
+        {filterTags.length > 0 && (
+          <div className="mb-7 mt-5 text-center text-white">
+            {filterTags.map((tag) => {
+              return (
+                <span
+                  className="cursor-pointer mr-4 rounded-md bg-slate-500 py-1 px-3"
+                  key={tag}
+                  onClick={() => removeFilterTag(tag)}
+                >
+                  <span className="mr-2">{tag}</span>
+                  <i className="bi bi-x"></i>
+                </span>
+              );
+            })}
+          </div>
+        )}
+
         {updatedList.length === 0 ? (
           <div className="text-center text-lg">No Results Found!</div>
         ) : listView === "gallery" ? (
@@ -118,6 +164,8 @@ const ViewItems = () => {
             listItems={updatedList}
             updatedListHandler={filteredListHandler}
             showOriginalList={showOriginalList}
+            addFilterTags={showFilterTags}
+            closeMenu={filterMenuHandler}
           />
         )}
       </div>

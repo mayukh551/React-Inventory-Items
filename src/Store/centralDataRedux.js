@@ -11,7 +11,6 @@ const itemSlice = createSlice({
       state.unshift(action.payload);
     },
     deleteItem(state, action) {
-      // return state.filter((element) => element.name !== action.payload);
       return action.payload;
     },
     updateItem(state, action) {

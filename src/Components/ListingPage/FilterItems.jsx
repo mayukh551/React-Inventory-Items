@@ -68,6 +68,12 @@ const FilterItems = (props) => {
     <Card
       styleCard={`h-[20rem] w-[18rem] flex flex-col justify-evenly absolute top-[22%] left-[2%] z-20`}
     >
+      <div 
+      onClick={() => props.closeMenu()}
+      className="absolute top-2 right-4 rounded-lg hover:bg-purple-700 bg-purple-600 text-white px-3 py-1">
+        Close
+      </div>
+      <br />
       <DropdownMenu label="RAM" options={ram} ref={ramRef} />
       <DropdownMenu
         label="Internal Storage"

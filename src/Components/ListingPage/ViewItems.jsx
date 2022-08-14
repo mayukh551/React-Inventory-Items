@@ -165,6 +165,7 @@ const ViewItems = () => {
             updatedListHandler={filteredListHandler}
             showOriginalList={showOriginalList}
             addFilterTags={showFilterTags}
+            closeMenu={filterMenuHandler}
           />
         )}
       </div>

@@ -62,25 +62,48 @@ const ViewItems = () => {
   const showFilterTags = (newTags) => {
     newTags.forEach((tag) => {
       if (!filterTags.includes(tag)) {
-        console.log("New Tag");
-        setFilterTags([...filterTags, tag]);
+        console.log("New Tag :", tag);
+        filterTags.push(tag);
       } else console.log("Tag already Implied");
     });
+    setFilterTags([...filterTags]);
   };
 
   const removeFilterTag = (tag) => {
+    console.log("Tag to remove", tag);
     if (filterTags.includes(tag)) {
       var delIndex = filterTags.findIndex((element) => tag === element);
-      if (filterTags.length > 1) filterTags.splice(delIndex, 1);
-      else filterTags.pop();
+      // var deletedFilterProp;
+      if (filterTags.length > 1) {
+        filterTags.slice(delIndex, delIndex + 1);
+        filterTags.splice(delIndex, 1);
+      } else {
+        filterTags.pop();
+      }
     }
+
     if (filterTags.length === 0) setUpdatedList([...listItems]);
     else {
-      // var newList = listItems;
-      // filterTags.forEach((tag) => {
-      //   newList.filter((item) => )
-      // })
+      console.log(filterTags);
+      var newList = [];
+      filterTags.forEach((tag) => {
+        newList = listItems.filter((item) => {
+          // console.log(item.details.ram, tag);
+          console.log(
+            item.details.ram === tag ||
+              item.details.internalStorage === tag ||
+              item.details.brand === tag
+          );
+          return (
+            item.details.ram === tag ||
+            item.details.internalStorage === tag ||
+            item.details.brand === tag
+          );
+        });
+      });
+      console.log(newList);
       setFilterTags([...filterTags]);
+      setUpdatedList([...newList]);
     }
   };
 
@@ -130,6 +153,7 @@ const ViewItems = () => {
         {/* Filter Tags */}
         {filterTags.length > 0 && (
           <div className="mb-7 mt-5 text-center text-white">
+            {console.log(filterTags)}
             {filterTags.map((tag) => {
               return (
                 <span
